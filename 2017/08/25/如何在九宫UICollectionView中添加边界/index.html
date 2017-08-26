@@ -95,12 +95,16 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="#如何在九宫UICollectionView中添加边界如果用layer.border来设置九宫格，当你设置宽度为0.5，两个cell挨在一块，会使他们的边框宽度增加一倍，如果在自定义的cell中代码加上view,也会引起上下左右的view因cell所处的方位的不同从而位置不同而引起麻烦。而且还会因为cell的重用而引起一些错误，所以查阅了部分资料总结了以下方法我用的是自定义一个cell的方法用枚举">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/08/25/如何在九宫UICollectionView中添加边界/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#如何在九宫UICollectionView中添加边界如果用layer.border来设置九宫格，当你设置宽度为0.5，两个cell挨在一块，会使他们的边框宽度增加一倍，如果在自定义的cell中代码加上view,也会引起上下左右的view因cell所处的方位的不同从而位置不同而引起麻烦。而且还会因为cell的重用而引起一些错误，所以查阅了部分资料总结了以下方法我用的是自定义一个cell的方法用枚举">
+<meta property="og:updated_time" content="2017-08-25T13:26:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#如何在九宫UICollectionView中添加边界如果用layer.border来设置九宫格，当你设置宽度为0.5，两个cell挨在一块，会使他们的边框宽度增加一倍，如果在自定义的cell中代码加上view,也会引起上下左右的view因cell所处的方位的不同从而位置不同而引起麻烦。而且还会因为cell的重用而引起一些错误，所以查阅了部分资料总结了以下方法我用的是自定义一个cell的方法用枚举">
 
 
 
@@ -130,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/25/如何在九宫UICollectionView中添加边界/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -155,8 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -219,9 +222,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -251,9 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/25/如何在九宫UICollectionView中添加边界/" itemprop="url">Unbenannt</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -303,9 +304,7 @@
       
 
       
-        
-          
-            <p>#如何在九宫UICollectionView中添加边界<br>如果用layer.border来设置九宫格，当你设置宽度为0.5，两个cell挨在一块，会使他们的边框宽度增加一倍，如果在自定义的cell中代码加上view,也会引起上下左右的view因cell所处的方位的不同从而位置不同而引起麻烦。而且还会因为cell的重用而引起一些错误，<br>所以查阅了部分资料总结了以下方法<br>我用的是自定义一个cell的方法<br>用枚举方法来表示边框的方位</p>
+        <p>#如何在九宫UICollectionView中添加边界<br>如果用layer.border来设置九宫格，当你设置宽度为0.5，两个cell挨在一块，会使他们的边框宽度增加一倍，如果在自定义的cell中代码加上view,也会引起上下左右的view因cell所处的方位的不同从而位置不同而引起麻烦。而且还会因为cell的重用而引起一些错误，<br>所以查阅了部分资料总结了以下方法<br>我用的是自定义一个cell的方法<br>用枚举方法来表示边框的方位</p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//MyCell.m</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> : <span class="built_in">NSUInteger</span> &#123;</div><div class="line">    SYCellBorderDirectionTop = <span class="number">1</span> &lt;&lt; <span class="number">0</span>,</div><div class="line">    SYCellBorderDirectionBottom = <span class="number">1</span>&lt;&lt;<span class="number">1</span>,</div><div class="line">    SYCellBorderDirectionRight = <span class="number">1</span> &lt;&lt;<span class="number">2</span>,</div><div class="line">    SYCellBorderDirectionLeft = <span class="number">1</span>&lt;&lt;<span class="number">3</span>,</div><div class="line">    </div><div class="line">&#125; SYCellBorderDirection;</div></pre></td></tr></table></figure>
 <p>下面就是如何，在各个方位来添加border</p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//MyCell.m</span></div><div class="line">-(<span class="keyword">void</span>)setBorderWithDirection:(SYCellBorderDirection)direction&#123;</div><div class="line">    <span class="built_in">CAShapeLayer</span> *layer = [[<span class="built_in">CAShapeLayer</span> alloc]init];</div><div class="line">    layer.lineWidth = <span class="number">0.5</span>;</div><div class="line">    layer.borderWidth =<span class="number">0.5</span>;</div><div class="line">    <span class="built_in">CGRect</span> rect = <span class="keyword">self</span>.contentView.bounds;</div><div class="line">    layer.strokeColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">224.0</span>/<span class="number">255.0</span> green:<span class="number">224.0</span>/<span class="number">255.0</span>  blue:<span class="number">224.0</span>/<span class="number">255.0</span>  alpha:<span class="number">1</span>].CGColor;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="built_in">UIBezierPath</span>*path = [[<span class="built_in">UIBezierPath</span> alloc]init];</div><div class="line">    </div><div class="line">   <span class="comment">// SYCellBorderDirection *dir = SYCellBorderDirectionTop|SYCellBorderDirectionBottom|SYCellBorderDirectionRight|SYCellBorderDirectionLeft</span></div><div class="line">    <span class="keyword">if</span> (direction &amp; SYCellBorderDirectionTop) &#123;</div><div class="line">        [path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>)];</div><div class="line">        [path addLineToPoint:<span class="built_in">CGPointMake</span>(rect.size.width, <span class="number">0</span>)];</div><div class="line">        </div><div class="line">        layer.path = path.CGPath;</div><div class="line">        </div><div class="line">        [<span class="keyword">self</span>.contentView.layer addSublayer:layer];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (direction &amp; SYCellBorderDirectionBottom) &#123;</div><div class="line">        [path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, rect.size.height)];</div><div class="line">        </div><div class="line">        [path addLineToPoint:<span class="built_in">CGPointMake</span>(rect.size.width, rect.size.height)];</div><div class="line">        </div><div class="line">        layer.path = path.CGPath;</div><div class="line">        </div><div class="line">        [<span class="keyword">self</span>.contentView.layer addSublayer:layer];</div><div class="line">       </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (direction &amp; SYCellBorderDirectionRight) &#123;</div><div class="line">        [path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>)];</div><div class="line">        [path addLineToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, rect.size.height)];</div><div class="line">        </div><div class="line">        layer.path = path.CGPath;</div><div class="line">        </div><div class="line">        [<span class="keyword">self</span>.contentView.layer addSublayer:layer];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (direction &amp; SYCellBorderDirectionLeft) &#123;</div><div class="line">        [path moveToPoint:<span class="built_in">CGPointMake</span>(rect.size.width, <span class="number">0</span>)];</div><div class="line">        [path addLineToPoint:<span class="built_in">CGPointMake</span>(rect.size.width, rect.size.height)];</div><div class="line">        </div><div class="line">        layer.path = path.CGPath;</div><div class="line">        </div><div class="line">        [<span class="keyword">self</span>.contentView.layer addSublayer:layer];</div><div class="line">      </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -314,8 +313,6 @@
 <p>然后cell根据tag的不同来添加边框</p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//MyCell.m</span></div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect&#123;</div><div class="line">    [<span class="keyword">super</span> drawRect:rect];</div><div class="line">    <span class="keyword">if</span> ((<span class="keyword">self</span>.tag/<span class="number">3</span>)==<span class="number">0</span>) &#123;</div><div class="line">        [<span class="keyword">self</span> setBorderWithDirection:SYCellBorderDirectionBottom|SYCellBorderDirectionRight|SYCellBorderDirectionTop];</div><div class="line">    &#125;<span class="keyword">if</span> ((<span class="keyword">self</span>.tag/<span class="number">3</span>)&gt;<span class="number">0</span>) &#123;</div><div class="line">        [<span class="keyword">self</span> setBorderWithDirection:SYCellBorderDirectionBottom|SYCellBorderDirectionRight];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -332,12 +329,12 @@
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -347,10 +344,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -358,6 +356,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -541,10 +543,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
